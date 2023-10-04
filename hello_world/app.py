@@ -7,16 +7,16 @@ import boto3
 
 
 def lambda_handler(event, context):
-    # to get access to the s3 bucket, I had to
-    # 1. edit the IAM role assigned to the lamda
-    # 2  Gave it full permissions, which I didnt want but dont know how to avoid.
+    
 
+    # stage variable doesnt come over when using the test button in the gateway.
     stage_variable_value = (event['stageVariables'] or {'alias': 'unknown'})["alias"]
     #stage_variable_value = event['stageVariables']["alias"]
         #event.get['StageVariables', {}].get('alias', 'wtf')
 
-
-
+    # to get access to the s3 bucket, I had to
+    # 1. edit the IAM role assigned to the lamda
+    # 2  Gave it full permissions, which I didnt want but dont know how to avoid.
 
     s3 = boto3.client('s3')
     bucket = 'configsjl'
